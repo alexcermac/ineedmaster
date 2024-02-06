@@ -33,6 +33,10 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+//    @OneToMany(orphanRemoval = true)
+//    @JoinColumn(name = "masterId", referencedColumnName = "id")
+//    private List<Solution> solutions;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));

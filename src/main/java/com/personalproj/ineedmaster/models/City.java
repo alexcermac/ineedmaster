@@ -1,8 +1,9 @@
 package com.personalproj.ineedmaster.models;
 
 import jakarta.persistence.*;
-//import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -14,10 +15,12 @@ public class City {
 //    @NotBlank
     private String name;
 
-//    @NotBlank
-    private Integer countyId;
-
 //    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "county.id")
+//    @ManyToOne
+//    @JoinColumn(name = "county_id")
 //    private County county;
+
+//    @OneToMany(orphanRemoval = true)
+//    @JoinColumn(name = "cityId", referencedColumnName = "id", nullable = false)
+//    private List<Solution> solutions;
 }

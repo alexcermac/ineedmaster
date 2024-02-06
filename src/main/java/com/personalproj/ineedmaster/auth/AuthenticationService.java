@@ -2,7 +2,7 @@ package com.personalproj.ineedmaster.auth;
 
 import com.personalproj.ineedmaster.config.JwtService;
 import com.personalproj.ineedmaster.models.User;
-import com.personalproj.ineedmaster.repository.IUserRepository;
+import com.personalproj.ineedmaster.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,7 +16,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
-    private final IUserRepository userRepository;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;

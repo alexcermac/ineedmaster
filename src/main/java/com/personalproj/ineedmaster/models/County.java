@@ -1,10 +1,8 @@
 package com.personalproj.ineedmaster.models;
 
 import jakarta.persistence.*;
-//import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,11 +12,13 @@ public class County {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-//    @NotBlank
     private String name;
 
-//    @OneToMany(mappedBy = "county", orphanRemoval = true)
     @OneToMany(orphanRemoval = true)
-    @JoinColumn(name = "countyId", referencedColumnName = "id")
+    @JoinColumn(name = "countyId", referencedColumnName = "id", nullable = false)
     private List<City> cities;
+
+//    @OneToMany(orphanRemoval = true)
+//    @JoinColumn(name = "countyId", referencedColumnName = "id")
+//    private List<Solution> solutions;
 }

@@ -1,6 +1,6 @@
 package com.personalproj.ineedmaster.config;
 
-import com.personalproj.ineedmaster.repository.IUserRepository;
+import com.personalproj.ineedmaster.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @RequiredArgsConstructor
 public class ApplicationConfig {
-    private final IUserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Bean
     public UserDetailsService userDetailsService() {
