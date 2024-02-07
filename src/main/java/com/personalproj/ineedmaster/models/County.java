@@ -17,8 +17,4 @@ public class County {
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "countyId", referencedColumnName = "id", nullable = false)
     private List<City> cities;
-
-//    @OneToMany(orphanRemoval = true)
-//    @JoinColumn(name = "countyId", referencedColumnName = "id")
-//    private List<Solution> solutions;
 }

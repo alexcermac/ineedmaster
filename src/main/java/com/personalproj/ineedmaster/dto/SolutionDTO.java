@@ -9,18 +9,24 @@ import lombok.Data;
 public class SolutionDTO {
     private Integer id;
     @NotNull(message = "Master id should not be null.")
-//    private Integer masterId;
     private Integer userId;
-//    private String category;
-//    private String subcategory;
+    @NotNull(message = "Category should not be null.")
+    private Integer categoryId;
+    @NotNull(message = "Subcategory should not be null.")
+    private Integer subcategoryId;
     @NotBlank(message = "Title should not be empty.")
     private String title;
-//    private String description;
-//    private String type;
-//    private float price;
-//    private Integer countyId;
+    @NotBlank(message = "Description should not be empty.")
+    private String description;
+    @NotBlank(message = "Type should not be empty.")
+    private String type;
+    private float price;
+    @NotNull(message = "County id should not be null.")
+    private Integer countyId;
     @NotNull(message = "City id should not be null.")
     private Integer cityId;
-//    private String startHour;
-//    private String endHour;
+    @NotNull(message = "Start hour should not be null.")
+    private String startHour;
+    @NotNull(message = "End hour should not be null.")
+    private String endHour;
 }

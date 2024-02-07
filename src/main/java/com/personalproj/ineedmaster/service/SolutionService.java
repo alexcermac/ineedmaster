@@ -6,6 +6,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -49,5 +50,10 @@ public class SolutionService implements ISolutionService {
         } else {
             throw new EntityNotFoundException("Solution with id " + id + " not found.");
         }
+    }
+
+    @Override
+    public List<Solution> getSolutionsByCountyIdAndCityId(Integer countyId, Integer cityId) {
+        return solutionRepository.findByCountyIdAndCityId(countyId, cityId);
     }
 }

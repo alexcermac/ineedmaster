@@ -1,6 +1,7 @@
 package com.personalproj.ineedmaster.controllers;
 
 import com.personalproj.ineedmaster.dto.SolutionDTO;
+import com.personalproj.ineedmaster.dto.SolutionSearchResponseDTO;
 import com.personalproj.ineedmaster.models.Solution;
 import com.personalproj.ineedmaster.service.SolutionService;
 import jakarta.persistence.EntityNotFoundException;
@@ -14,8 +15,10 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/solutions")
@@ -37,13 +40,25 @@ public class SolutionController {
         }
     }
 
+    @GetMapping("/county/{countyId}/city/{cityId}")
+    public List<SolutionSearchResponseDTO> getSolutionsByCountyIdAndCityId(
+            @PathVariable Integer countyId,
+            @PathVariable Integer cityId
+    ) {
+        List<Solution> solutions = solutionService.getSolutionsByCountyIdAndCityId(countyId, cityId);
+        List<SolutionSearchResponseDTO> solutionsDTO = solutions.stream()
+                .map(solution -> modelMapper.map(solution, SolutionSearchResponseDTO.class))
+                .toList();
+        return solutionsDTO;
+    }
+
     @PostMapping
     public ResponseEntity<SolutionDTO> createSolution(@Valid @RequestBody SolutionDTO solutionDTO) {
         Solution solutionRequest = modelMapper.map(solutionDTO, Solution.class);
         Solution createdSolution = solutionService.createSolution(solutionRequest);
 
         SolutionDTO solutionResponse = modelMapper.map(createdSolution, SolutionDTO.class);
-        return new ResponseEntity<SolutionDTO>(solutionResponse, HttpStatus.CREATED);
+        return new ResponseEntity<>(solutionResponse, HttpStatus.CREATED);
     }
 
     @PutMapping("{id}")
