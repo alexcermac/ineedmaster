@@ -1,7 +1,8 @@
 package com.personalproj.ineedmaster.controllers;
 
-import com.personalproj.ineedmaster.dto.SolutionDTO;
+import com.personalproj.ineedmaster.dto.SolutionRequestDTO;
 import com.personalproj.ineedmaster.dto.SolutionSearchResponseDTO;
+import com.personalproj.ineedmaster.exceptions.ResourceNotFoundException;
 import com.personalproj.ineedmaster.models.Solution;
 import com.personalproj.ineedmaster.service.SolutionService;
 import jakarta.persistence.EntityNotFoundException;
@@ -10,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +18,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/solutions")
@@ -28,16 +27,11 @@ public class SolutionController {
     private final ModelMapper modelMapper;
 
     @GetMapping("{id}")
-    public ResponseEntity<SolutionDTO> getSolutionById(@PathVariable Integer id) {
+    public ResponseEntity<SolutionRequestDTO> getSolutionById(@PathVariable Integer id) {
         Optional<Solution> solution = solutionService.getSolutionById(id);
+        SolutionRequestDTO solutionResponse = modelMapper.map(solution, SolutionRequestDTO.class);
 
-        if(solution.isPresent()) {
-            SolutionDTO solutionResponse = modelMapper.map(solution, SolutionDTO.class);
-
-            return ResponseEntity.ok().body(solutionResponse);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return ResponseEntity.ok().body(solutionResponse);
     }
 
     @GetMapping("/county/{countyId}/city/{cityId}")
@@ -52,37 +46,98 @@ public class SolutionController {
         return solutionsDTO;
     }
 
-    @PostMapping
-    public ResponseEntity<SolutionDTO> createSolution(@Valid @RequestBody SolutionDTO solutionDTO) {
-        Solution solutionRequest = modelMapper.map(solutionDTO, Solution.class);
-        Solution createdSolution = solutionService.createSolution(solutionRequest);
+    @GetMapping("/county/{countyId}/city/{cityId}/category/{categoryId}")
+    public List<SolutionSearchResponseDTO> getSolutionsByCountyIdAndCityIdAndCategoryId(
+            @PathVariable Integer countyId,
+            @PathVariable Integer cityId,
+            @PathVariable Integer categoryId
+    ) {
+        List<Solution> solutions = solutionService.getSolutionsByCountyIdAndCityIdAndCategoryId(countyId, cityId, categoryId);
+        List<SolutionSearchResponseDTO> solutionsDTO = solutions.stream()
+                .map(solution -> modelMapper.map(solution, SolutionSearchResponseDTO.class))
+                .toList();
+        return solutionsDTO;
+    }
 
-        SolutionDTO solutionResponse = modelMapper.map(createdSolution, SolutionDTO.class);
+    @GetMapping("/county/{countyId}/city/{cityId}/category/{categoryId}/subcategory/{subcategoryId}")
+    public List<SolutionSearchResponseDTO> getSolutionsByCountyIdAndCityIdAndCategoryIdAndSubcategoryId(
+            @PathVariable Integer countyId,
+            @PathVariable Integer cityId,
+            @PathVariable Integer categoryId,
+            @PathVariable Integer subcategoryId
+    ) {
+        List<Solution> solutions = solutionService.getSolutionsByCountyIdAndCityIdAndCategoryIdAndSubcategoryId(countyId, cityId, categoryId, subcategoryId);
+        List<SolutionSearchResponseDTO> solutionsDTO = solutions.stream()
+                .map(solution -> modelMapper.map(solution, SolutionSearchResponseDTO.class))
+                .toList();
+        return solutionsDTO;
+    }
+
+    @GetMapping("/county/{countyId}/category/{categoryId}")
+    public List<SolutionSearchResponseDTO> getSolutionsByCountyIdAndCategoryId(
+            @PathVariable Integer countyId,
+            @PathVariable Integer categoryId
+    ) {
+        List<Solution> solutions = solutionService.getSolutionsByCountyIdAndCategoryId(countyId, categoryId);
+        List<SolutionSearchResponseDTO> solutionsDTO = solutions.stream()
+                .map(solution -> modelMapper.map(solution, SolutionSearchResponseDTO.class))
+                .toList();
+        return solutionsDTO;
+    }
+
+    @GetMapping("/county/{countyId}/category/{categoryId}/subcategory/{subcategoryId}")
+    public List<SolutionSearchResponseDTO> getSolutionsByCountyIdAndCategoryId(
+            @PathVariable Integer countyId,
+            @PathVariable Integer categoryId,
+            @PathVariable Integer subcategoryId
+    ) {
+        List<Solution> solutions = solutionService.getSolutionsByCountyIdAndCategoryIdAndSubcategoryId(countyId, categoryId, subcategoryId);
+        List<SolutionSearchResponseDTO> solutionsDTO = solutions.stream()
+                .map(solution -> modelMapper.map(solution, SolutionSearchResponseDTO.class))
+                .toList();
+        return solutionsDTO;
+    }
+
+    @GetMapping("/master/{id}")
+    public List<SolutionSearchResponseDTO> getSolutionsByMasterId(@PathVariable Integer id) {
+        List<Solution> solutions = solutionService.getSolutionsByMasterId(id);
+        List<SolutionSearchResponseDTO> solutionsDTO = solutions.stream()
+                .map(solution -> modelMapper.map(solution, SolutionSearchResponseDTO.class))
+                .toList();
+        return solutionsDTO;
+    }
+
+    @PostMapping
+    public ResponseEntity<SolutionRequestDTO> createSolution(@Valid @RequestBody SolutionRequestDTO solutionRequestDTO) {
+        Solution solutionRequest = modelMapper.map(solutionRequestDTO, Solution.class);
+
+        Solution createdSolution = solutionService.createSolution(solutionRequest);
+        SolutionRequestDTO solutionResponse = modelMapper.map(createdSolution, SolutionRequestDTO.class);
+
         return new ResponseEntity<>(solutionResponse, HttpStatus.CREATED);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<SolutionDTO> updateSolution(@PathVariable Integer id, @RequestBody SolutionDTO newSolutionDto) {
-        Solution solutionRequest = modelMapper.map(newSolutionDto, Solution.class);
+    public ResponseEntity<SolutionRequestDTO> updateSolution(@PathVariable Integer id, @RequestBody SolutionRequestDTO newSolutionRequestDto) {
+        Solution solutionRequest = modelMapper.map(newSolutionRequestDto, Solution.class);
 
-        try {
-            Solution updatedSolution = solutionService.updateSolution(id, solutionRequest);
+        Solution updatedSolution = solutionService.updateSolution(id, solutionRequest);
+        SolutionRequestDTO updatedSolutionRequestDto = modelMapper.map(updatedSolution, SolutionRequestDTO.class);
 
-            SolutionDTO updatedSolutionDto = modelMapper.map(updatedSolution, SolutionDTO.class);
-            return new ResponseEntity<>(updatedSolutionDto, HttpStatus.OK);
-        } catch (EntityNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return new ResponseEntity<>(updatedSolutionRequestDto, HttpStatus.OK);
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<SolutionDTO> deleteSolution(@PathVariable Integer id) {
-        try {
-            solutionService.deleteSolution(id);
-            return new ResponseEntity<>(null, HttpStatus.OK);
-        } catch (EntityNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity deleteSolution(@PathVariable Integer id) {
+        solutionService.deleteSolution(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<Object> handleResourceNotFoundException(ResourceNotFoundException exception) {
+        Map<String, Object> body = new HashMap<>();
+        body.put("message", exception.getMessage());
+        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

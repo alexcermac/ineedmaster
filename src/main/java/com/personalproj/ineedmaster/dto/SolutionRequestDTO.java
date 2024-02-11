@@ -1,12 +1,11 @@
 package com.personalproj.ineedmaster.dto;
 
-import com.personalproj.ineedmaster.models.User;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class SolutionDTO {
+public class SolutionRequestDTO {
     private Integer id;
     @NotNull(message = "Master id should not be null.")
     private Integer userId;

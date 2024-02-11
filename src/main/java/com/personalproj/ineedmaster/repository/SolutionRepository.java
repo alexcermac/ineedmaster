@@ -7,4 +7,9 @@ import java.util.List;
 
 public interface SolutionRepository extends JpaRepository<Solution, Integer> {
     List<Solution> findByCountyIdAndCityId(Integer countyId, Integer cityId);
+    List<Solution> findByCountyIdAndCityIdAndCategoryId(Integer countyId, Integer cityId, Integer categoryId);
+    List<Solution> findByCountyIdAndCityIdAndCategoryIdAndSubcategoryId(Integer countyId, Integer cityId, Integer categoryId, Integer subcategoryId);
+    List<Solution> findByCountyIdAndCategoryId(Integer countyId, Integer categoryId);
+    List<Solution> findByCountyIdAndCategoryIdAndSubcategoryId(Integer countyId, Integer categoryId, Integer subcategoryId);
+    List<Solution> findByUserId(Integer userId);
 }

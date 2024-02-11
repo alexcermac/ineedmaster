@@ -15,17 +15,21 @@ public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
     @PostMapping("register")
-    public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request) {
+    public ResponseEntity register(@RequestBody RegisterRequest request) {
         try {
-            AuthenticationResponse token =authenticationService.register(request);
+            AuthenticationResponse token = authenticationService.register(request);
             return new ResponseEntity<>(token, HttpStatus.CREATED);
         } catch(Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CREATED);
         }
     }
 
     @PostMapping("authenticate")
-    public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
-        return  ResponseEntity.ok(authenticationService.authenticate(request));
+    public ResponseEntity authenticate(@RequestBody AuthenticationRequest request) {
+        try {
+            return ResponseEntity.ok(authenticationService.authenticate(request));
+        } catch(Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 }

@@ -17,8 +17,6 @@ public class Solution {
     @JoinColumn(name = "user_id")
     private User user;
 
-//    private Integer categoryId;
-//    private Integer subcategoryId;
     @ManyToOne()
     @JoinColumn(name = "category_id")
     private Category category;

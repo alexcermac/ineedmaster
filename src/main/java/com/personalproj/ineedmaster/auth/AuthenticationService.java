@@ -50,11 +50,13 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
+        Optional<User> user = userRepository.findByEmail(request.getEmail());
 
-        User user = userRepository.findByEmail(request.getEmail())
-                // TODO: throw the correct exception and handle it
-                .orElseThrow();
-        var jwtToken = jwtService.generateToken(user);
+        if(user.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User not found!");
+        }
+
+        var jwtToken = jwtService.generateToken(user.get());
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();

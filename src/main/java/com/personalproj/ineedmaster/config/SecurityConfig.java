@@ -4,6 +4,7 @@ import com.personalproj.ineedmaster.models.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,6 +29,11 @@ public class SecurityConfig {
                 .authorizeHttpRequests(requests ->
                         requests
                                 .requestMatchers("/api/auth/**").permitAll()
+                                .requestMatchers("/api/counties").permitAll()
+                                .requestMatchers("/api/categories").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/api/solutions/**").permitAll()
+                                .requestMatchers("/api/solutions/county/**").permitAll()
+                                .requestMatchers("/api/solutions/master/{id}").permitAll()
                                 .requestMatchers("/api/demo-controller/hello/customer").hasRole("CUSTOMER")
                                 .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
