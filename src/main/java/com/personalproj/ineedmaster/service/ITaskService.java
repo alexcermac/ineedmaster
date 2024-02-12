@@ -9,6 +9,9 @@ public interface ITaskService {
     Task getTaskById(Integer id);
     List<Task> getTasksByCustomerId(Integer id);
     List<Task> getFutureTasksByCustomerIdAndCurrentDate(Integer id, Date currentDate);
+    List<Task> getOldTasksByCustomerIdAndCurrentDate(Integer id, Date currentDate);
+    List<Task> getFutureTasksByMasterIdAndCurrentDate(Integer id, Date currentDate);
+    List<Task> getOldTasksByMasterIdAndCurrentDate(Integer id, Date currentDate);
     Task createTask(Task task);
     Task updateTask(Integer id, Task task);
     void deleteTask(Integer id);

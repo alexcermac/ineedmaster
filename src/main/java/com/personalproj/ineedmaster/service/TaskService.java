@@ -37,6 +37,21 @@ public class TaskService implements ITaskService {
     }
 
     @Override
+    public List<Task> getOldTasksByCustomerIdAndCurrentDate(Integer id, Date currentDate) {
+        return taskRepository.findByCustomerIdAndDateBefore(id, currentDate);
+    }
+
+    @Override
+    public List<Task> getFutureTasksByMasterIdAndCurrentDate(Integer id, Date currentDate) {
+        return taskRepository.findByMasterIdAndDateAfter(id, currentDate);
+    }
+
+    @Override
+    public List<Task> getOldTasksByMasterIdAndCurrentDate(Integer id, Date currentDate) {
+        return taskRepository.findByMasterIdAndDateBefore(id, currentDate);
+    }
+
+    @Override
     public Task createTask(Task task) {
         return taskRepository.save(task);
     }
