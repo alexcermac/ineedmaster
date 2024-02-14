@@ -1,0 +1,13 @@
+INSERT INTO county (id, name) VALUES (1, 'Maramures');
+INSERT INTO county (id, name) VALUES (2, 'Cluj');
+INSERT INTO city (id, name, county_id) VALUES (1, 'Baia Mare', 1);
+INSERT INTO city (id, name, county_id) VALUES (2, 'Baia Sprie', 1);
+INSERT INTO city (id, name, county_id) VALUES (3, 'Cluj-Napoca', 2);
+INSERT INTO city (id, name, county_id) VALUES (4, 'Gherla', 2);
+INSERT INTO city (id, name, county_id) VALUES (5, 'Turda', 2);
+INSERT INTO category (id, name) VALUES (1, 'Instalator');
+INSERT INTO category (id, name) VALUES (2, 'Reparator interior');
+INSERT INTO subcategory (id, name, category_id) VALUES (1, 'Instalat tevi', 1);
+INSERT INTO subcategory (id, name, category_id) VALUES (2, 'Reparat conducte', 1);
+INSERT INTO subcategory (id, name, category_id) VALUES (3, 'Zugravit', 2);
+INSERT INTO subcategory (id, name, category_id) VALUES (4, 'Vopsit', 2);
