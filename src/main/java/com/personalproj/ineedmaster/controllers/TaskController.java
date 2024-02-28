@@ -18,6 +18,7 @@ import java.util.*;
 @RestController
 @RequestMapping("/api/tasks")
 @RequiredArgsConstructor
+@CrossOrigin
 public class TaskController {
     private final TaskService taskService;
     private final ModelMapper modelMapper;

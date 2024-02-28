@@ -8,6 +8,7 @@ import lombok.Data;
 public class SolutionSearchResponseDTO {
     private Integer id;
     private Integer userId;
+    private String userFirstName;
     private Integer categoryId;
     private String categoryName;
     private Integer subcategoryId;

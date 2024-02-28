@@ -22,14 +22,15 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/solutions")
 @RequiredArgsConstructor
+@CrossOrigin
 public class SolutionController {
     private final SolutionService solutionService;
     private final ModelMapper modelMapper;
 
     @GetMapping("{id}")
-    public ResponseEntity<SolutionRequestDTO> getSolutionById(@PathVariable Integer id) {
+    public ResponseEntity<SolutionSearchResponseDTO> getSolutionById(@PathVariable Integer id) {
         Optional<Solution> solution = solutionService.getSolutionById(id);
-        SolutionRequestDTO solutionResponse = modelMapper.map(solution, SolutionRequestDTO.class);
+        SolutionSearchResponseDTO solutionResponse = modelMapper.map(solution, SolutionSearchResponseDTO.class);
 
         return ResponseEntity.ok().body(solutionResponse);
     }

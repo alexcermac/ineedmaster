@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/demo-controller")
 //@CrossOrigin
 public class DemoController {
+    @CrossOrigin
     @GetMapping("/hello")
     public ResponseEntity<String> sayHello() {
         return ResponseEntity.ok("Hello from secured endpoint!");
