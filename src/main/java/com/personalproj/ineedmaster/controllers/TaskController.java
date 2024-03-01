@@ -84,7 +84,7 @@ public class TaskController {
         return tasksDto;
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{id}/customer")
     public TaskResponseDTO updateTask(@PathVariable Integer id, @RequestBody TaskRequestDTO taskRequestDTO) {
         Task newTask = modelMapper.map(taskRequestDTO, Task.class);
         Task updatedTask = taskService.updateTask(id, newTask);

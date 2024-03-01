@@ -12,6 +12,7 @@ public class TaskResponseDTO {
     private Integer masterId;
     private String masterFirstName;
 
+    private String solutionId;
     private String solutionCategoryName;
     private String solutionSubcategoryName;
     private String solutionTitle;
