@@ -2,9 +2,9 @@ package com.personalproj.ineedmaster.controllers;
 
 import com.personalproj.ineedmaster.config.JwtService;
 import com.personalproj.ineedmaster.dto.UserDTO;
+import com.personalproj.ineedmaster.dto.UserMasterDTO;
 import com.personalproj.ineedmaster.models.User;
 import com.personalproj.ineedmaster.service.UserService;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -13,8 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -40,14 +38,13 @@ public class UserController {
         UserDTO userDto = modelMapper.map(user, UserDTO.class);
 
         return ResponseEntity.ok().body(userDto);
-//
-//        if(user.isPresent()) {
-//            UserDTO userDto = modelMapper.map(user, UserDTO.class);
-//
-//            return ResponseEntity.ok().body(userDto);
-//        } else {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//        UserDTO userDtoFound = userService.getLoggedInUserByEmail(email);
+    }
+
+    @GetMapping("/master/{id}")
+    public ResponseEntity<UserMasterDTO> getUserMasterById(@PathVariable Integer id) {
+        User user = userService.getUserMasterById(id);
+        UserMasterDTO userMasterDTO = modelMapper.map(user, UserMasterDTO.class);
+
+        return ResponseEntity.ok().body(userMasterDTO);
     }
 }

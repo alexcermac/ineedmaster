@@ -9,6 +9,9 @@ import java.util.Date;
 public class TaskResponseDTO {
     private Integer id;
     private Integer customerId;
+    private String customerFirstName;
+    private String customerLastName;
+    private String customerPhoneNumber;
     private Integer masterId;
     private String masterFirstName;
 

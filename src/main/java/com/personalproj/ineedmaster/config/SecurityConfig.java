@@ -1,6 +1,5 @@
 package com.personalproj.ineedmaster.config;
 
-import com.personalproj.ineedmaster.models.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +30,7 @@ public class SecurityConfig {
                                 .requestMatchers("/api/auth/**").permitAll()
                                 .requestMatchers("/api/counties").permitAll()
                                 .requestMatchers("/api/categories").permitAll()
+                                .requestMatchers("/api/users/master/{id}").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/api/solutions/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/solutions").hasRole("MASTER")
                                 .requestMatchers("/api/solutions/county/**").permitAll()
