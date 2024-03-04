@@ -33,6 +33,7 @@ public class SecurityConfig {
                                 .requestMatchers("/api/users/master/{id}").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/api/solutions/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/solutions").hasRole("MASTER")
+                                .requestMatchers(HttpMethod.PUT, "/api/solutions/{id}").hasRole("MASTER")
                                 .requestMatchers("/api/solutions/county/**").permitAll()
                                 .requestMatchers("/api/solutions/master/{id}").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/tasks").hasRole("CUSTOMER")
