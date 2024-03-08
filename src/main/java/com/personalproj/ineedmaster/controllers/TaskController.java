@@ -5,7 +5,7 @@ import com.personalproj.ineedmaster.dto.TaskRequestDTO;
 import com.personalproj.ineedmaster.dto.TaskResponseDTO;
 import com.personalproj.ineedmaster.exceptions.ResourceNotFoundException;
 import com.personalproj.ineedmaster.models.Task;
-import com.personalproj.ineedmaster.service.TaskService;
+import com.personalproj.ineedmaster.service.ITaskService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,7 +20,7 @@ import java.util.*;
 @RequiredArgsConstructor
 @CrossOrigin
 public class TaskController {
-    private final TaskService taskService;
+    private final ITaskService taskService;
     private final ModelMapper modelMapper;
 
     @PostMapping

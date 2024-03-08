@@ -4,7 +4,7 @@ import com.personalproj.ineedmaster.config.JwtService;
 import com.personalproj.ineedmaster.dto.UserDTO;
 import com.personalproj.ineedmaster.dto.UserMasterDTO;
 import com.personalproj.ineedmaster.models.User;
-import com.personalproj.ineedmaster.service.UserService;
+import com.personalproj.ineedmaster.service.IUserService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -19,7 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 @RequiredArgsConstructor
 @CrossOrigin
 public class UserController {
-    private final UserService userService;
+    private final IUserService userService;
     private final ModelMapper modelMapper;
     private final JwtService jwtService;
 

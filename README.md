@@ -19,7 +19,7 @@ Mention: The front end is implemented using React (Next.js) and is stored in ano
 
 ## 1. Description
 
-This project represents a platform based on Spring Boot on the back end, it is deployed on AWS EC2 with the help of docker compose, the platform whose main purpose is to connect clients who need certain services with masters who offer services such as plumber, electrician, builder, and so on.
+This project represents a platform based on Spring Boot on the back end following SOLID principles, it is deployed on AWS EC2 with the help of docker compose, the platform whose main purpose is to connect clients who need certain services with masters who offer services such as plumber, electrician, builder, and so on.
 The platform provides authentication functionality and allows users to create accounts with the role of client or master.
 Customers can search for services available in a specific city according to certain filters such as categories and subcategories of services, and they can make a reservation for these services if they are registered and authenticated on the platform. Masters can create new services that they offer, and accept or refuse reservations (Tasks) made by customers.
 

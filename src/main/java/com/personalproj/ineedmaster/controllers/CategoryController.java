@@ -1,7 +1,7 @@
 package com.personalproj.ineedmaster.controllers;
 
 import com.personalproj.ineedmaster.models.Category;
-import com.personalproj.ineedmaster.service.CategoryService;
+import com.personalproj.ineedmaster.service.ICategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin
 public class CategoryController {
-    private final CategoryService categoryService;
+    private final ICategoryService categoryService;
 
     @GetMapping
     public List<Category> getAllCategories() {

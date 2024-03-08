@@ -1,7 +1,7 @@
 package com.personalproj.ineedmaster.controllers;
 
 import com.personalproj.ineedmaster.models.County;
-import com.personalproj.ineedmaster.service.CountyService;
+import com.personalproj.ineedmaster.service.ICountyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin
 public class CountyController {
-    private final CountyService countyService;
+    private final ICountyService countyService;
 
     @GetMapping
     public List<County> getAllCounties() {

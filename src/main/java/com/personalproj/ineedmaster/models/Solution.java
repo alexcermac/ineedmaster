@@ -29,7 +29,7 @@ public class Solution {
     private String description;
 
     @Enumerated(EnumType.STRING)
-    private Type type;    // check OR cost/task
+    private Type type;
 
     private float price;
 

@@ -4,7 +4,7 @@ import com.personalproj.ineedmaster.dto.SolutionRequestDTO;
 import com.personalproj.ineedmaster.dto.SolutionSearchResponseDTO;
 import com.personalproj.ineedmaster.exceptions.ResourceNotFoundException;
 import com.personalproj.ineedmaster.models.Solution;
-import com.personalproj.ineedmaster.service.SolutionService;
+import com.personalproj.ineedmaster.service.ISolutionService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @CrossOrigin
 public class SolutionController {
-    private final SolutionService solutionService;
+    private final ISolutionService solutionService;
     private final ModelMapper modelMapper;
 
     @GetMapping("{id}")
