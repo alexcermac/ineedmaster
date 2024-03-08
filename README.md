@@ -1,6 +1,6 @@
 # iNeedMaster
-Contact
-Email: alexandrucermac@gmail.com
+Contact <br/>
+Email: alexandrucermac@gmail.com <br/>
 Phone number: 0743939803
 
 Mention: The front end is implemented using React (Next.js) and is stored in another GitHub repository. **[Click here to open repository](https://github.com/alexcermac/ineedmaster_client)**
@@ -8,12 +8,12 @@ Mention: The front end is implemented using React (Next.js) and is stored in ano
 ### Table of contents
 1. [Description](#description)
 2. [Technologies](#technologies)
-3. [A few steps on how I built it](#a-few-steps-on-how-i-built-it)
-   3.1 [Class diagram and normalization](#class-diagram-and-normalization)
-   3.2 [Customer flow diagram](#customer-flow-diagram)
-   3.4 [Architecture](#architecture)
-   3.5 [Build and Deploy](#build-and-deploy)
-4. [Installation](#installation)
+3. [A few steps on how I built it](#a-few-steps-on-how-i-built-it) <br/>
+   3.1 [Class diagram and normalization](#class-diagram-and-normalization) <br/>
+   3.2 [Customer flow diagram](#customer-flow-diagram) <br/>
+   3.4 [Architecture](#architecture) <br/>
+   3.5 [Build and Deploy](#build-and-deploy) <br/>
+4. [Installation](#installation) <br/>
 5. [ Future updates, problems, things that need to be fixed](#future-updates-problems-things-that-need-to-be-fixed)
 
 
