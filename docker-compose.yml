@@ -9,7 +9,7 @@ services:
     ports:
       - 5432:5432
   app:
-    image: alexdockercompose/ineedmaster
+    image: alexdockercompose/ineedmaster:latest
 #    build:
 #      context: .
 #      dockerfile: Dockerfile

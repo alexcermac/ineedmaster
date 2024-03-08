@@ -21,16 +21,6 @@ public class SolutionService implements ISolutionService {
 
     @Override
     public Optional<Solution> getSolutionById(Integer id) {
-//        return solutionRepository.findById(id)
-//                .orElseThrow(() -> new IllegalStateException(String.format("Employee with id &s does not exist.", id)));
-
-//        Optional<Solution> foundSolution = solutionRepository.findById(id);
-//
-//        if(foundSolution.isPresent()) {
-//            return foundSolution;
-//        } else {
-//            throw new EntityNotFoundException("Solution with id " + id + " not found.");
-//        }
         Optional<Solution> foundSolution = solutionRepository.findById(id);
 
         if(foundSolution.isPresent()) {
@@ -51,6 +41,8 @@ public class SolutionService implements ISolutionService {
             solution.setDescription(newSolution.getDescription());
             solution.setType(newSolution.getType());
             solution.setPrice(newSolution.getPrice());
+            solution.setCounty(newSolution.getCounty());
+            solution.setCity(newSolution.getCity());
             solution.setCategory(newSolution.getCategory());
             solution.setSubcategory(newSolution.getSubcategory());
             solution.setStartHour(newSolution.getStartHour());
@@ -100,5 +92,10 @@ public class SolutionService implements ISolutionService {
     @Override
     public List<Solution> getSolutionsByMasterId(Integer id) {
         return solutionRepository.findByUserId(id);
+    }
+
+    @Override
+    public List<Solution> getLast10Solutions() {
+        return solutionRepository.findFirst10ByOrderByIdDesc();
     }
 }

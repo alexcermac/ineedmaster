@@ -108,6 +108,15 @@ public class SolutionController {
         return solutionsDTO;
     }
 
+    @GetMapping("/last-10")
+    public List<SolutionSearchResponseDTO> getLast10Solutions() {
+        List<Solution> solutions = solutionService.getLast10Solutions();
+        List<SolutionSearchResponseDTO> solutionsDTO = solutions.stream()
+                .map(solution -> modelMapper.map(solution, SolutionSearchResponseDTO.class))
+                .toList();
+        return solutionsDTO;
+    }
+
     @PostMapping
     public ResponseEntity<SolutionRequestDTO> createSolution(@Valid @RequestBody SolutionRequestDTO solutionRequestDTO) {
         Solution solutionRequest = modelMapper.map(solutionRequestDTO, Solution.class);
