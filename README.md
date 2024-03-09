@@ -14,10 +14,10 @@ Mention: The front end is implemented using React (Next.js) and is stored in ano
    3.4 [Architecture](#architecture) <br/>
    3.5 [Build and Deploy](#build-and-deploy) <br/>
 4. [Installation](#installation) <br/>
-5. [ Future updates, problems, things that need to be fixed](#future-updates-problems-things-that-need-to-be-fixed)
+5. [Future updates, problems, things that need to be fixed](#future-updates-problems-things-that-need-to-be-fixed)
 
 
-## 1. Description
+## <a name="description"></a> 1. Description
 
 This project represents a platform based on Spring Boot on the back end following SOLID principles, it is deployed on AWS EC2 with the help of docker compose, the platform whose main purpose is to connect clients who need certain services with masters who offer services such as plumber, electrician, builder, and so on.
 The platform provides authentication functionality and allows users to create accounts with the role of client or master.
@@ -25,15 +25,15 @@ Customers can search for services available in a specific city according to cert
 
 **The words solution and service will be used with the same meaning, because initially I thought of the project using the word service, which makes more sense in this context, but this word is reserved for spring boot*
 
-## 2. Technologies
+## <a name="technologies"></a> 2. Technologies
 - Java Spring Boot
 - PostgreSQL
 - Docker
 - AWS EC2
 
-## 3. A few steps on how I built it
+## <a name="a-few-steps-on-how-i-built-it"></a> 3. A few steps on how I built it
 
-### 3.1 Class diagram and normalization
+### <a name="class-diagram-and-normalization"></a> 3.1 Class diagram and normalization
 Class diagram final form:
 ![class diagram image](/readme_images/class_diagram_final.png?raw=true)
 <details>
@@ -76,20 +76,20 @@ I started from the following ER Diagram:
 </ul>
 </details>
 
-### 3.2 Customer flow diagram
+### <a name="customer-flow-diagram"></a> 3.2 Customer flow diagram
 
 ![customer flow diagram](/readme_images/customer_flow_diagram.jpg?raw=true)
 
-### 3.3 Architecture
+### <a name="architecture"></a> 3.3 Architecture
 I used the classic spring boot approach, namely **layer architecture**, the layers being **Controller, Service, Repository**.
 
 ![layer architecture](/readme_images/layer_architecture.jpg?raw=true)
 
-### 3.4 Build and Deploy
+### <a name="build-and-deploy"></a> 3.4 Build and Deploy
 To make the deployment on **AWS EC2** easier I used **Docker** and **docker compose**. I stored the docker image of the project on docker hub, to access it from the docker compose file that is stored on EC2.
 To deploy the project on EC2 I created a new instance of it on AWS, updated the system apps, installed docker and docker compose, create docker-compose file, edit this file and the last step being the launch of containers with docker-compose, just like we do locally.
 
-## 4. Installation
+## <a name="installation"></a> 4. Installation
 
 <ol>
 	<li>
@@ -106,11 +106,14 @@ To deploy the project on EC2 I created a new instance of it on AWS, updated the 
 	</li>
 </ol>
 
-## 5. Future updates, problems, things that need to be fixed
+## <a name="future-updates-problems-things-that-need-to-be-fixed"></a> 5. Future updates, problems, things that need to be fixed
 <ul>
 	<li>
 		<p>A <b>business problem</b> with this platform is <b>the communication</b> between the client and the one who provides the services on the part of setting the date and time. That is, the client can only offer a variant of the date and time interval, and the service provider can accept or refuse.</p>
 	</li>
+    <li>
+         <p>Adding the possibility for masters to <b>upload images</b> to the services that they provide.</p>
+    </li>
 	<li>
 		<p>For the task and booking part, I think it would be a better approach if the client post the service he needs in a specific category, and for the masters to choose the works they can provide.</p>
 	</li>

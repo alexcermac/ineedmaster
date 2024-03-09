@@ -90,6 +90,11 @@ public class SolutionService implements ISolutionService {
     }
 
     @Override
+    public List<Solution> getSolutionsByCategoryIdAndSubcategoryId(Integer categoryId, Integer subcategoryId) {
+        return solutionRepository.findByCategoryIdAndSubcategoryId(categoryId, subcategoryId);
+    }
+
+    @Override
     public List<Solution> getSolutionsByMasterId(Integer id) {
         return solutionRepository.findByUserId(id);
     }

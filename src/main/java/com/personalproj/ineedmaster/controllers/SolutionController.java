@@ -99,6 +99,18 @@ public class SolutionController {
         return solutionsDTO;
     }
 
+    @GetMapping("/category/{categoryId}/subcategory/{subcategoryId}")
+    public List<SolutionSearchResponseDTO> getSolutionsByCategoryIdAndSubcategoryId(
+            @PathVariable Integer categoryId,
+            @PathVariable Integer subcategoryId
+    ) {
+        List<Solution> solutions = solutionService.getSolutionsByCategoryIdAndSubcategoryId(categoryId, subcategoryId);
+        List<SolutionSearchResponseDTO> solutionsDTO = solutions.stream()
+                .map(solution -> modelMapper.map(solution, SolutionSearchResponseDTO.class))
+                .toList();
+        return solutionsDTO;
+    }
+
     @GetMapping("/master/{id}")
     public List<SolutionSearchResponseDTO> getSolutionsByMasterId(@PathVariable Integer id) {
         List<Solution> solutions = solutionService.getSolutionsByMasterId(id);

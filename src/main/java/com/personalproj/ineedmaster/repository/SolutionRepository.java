@@ -11,6 +11,7 @@ public interface SolutionRepository extends JpaRepository<Solution, Integer> {
     List<Solution> findByCountyIdAndCityIdAndCategoryIdAndSubcategoryId(Integer countyId, Integer cityId, Integer categoryId, Integer subcategoryId);
     List<Solution> findByCountyIdAndCategoryId(Integer countyId, Integer categoryId);
     List<Solution> findByCountyIdAndCategoryIdAndSubcategoryId(Integer countyId, Integer categoryId, Integer subcategoryId);
+    List<Solution> findByCategoryIdAndSubcategoryId(Integer categoryId, Integer subcategoryId);
     List<Solution> findByUserId(Integer userId);
     List<Solution> findFirst10ByOrderByIdDesc();
 }
