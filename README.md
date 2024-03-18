@@ -26,10 +26,10 @@ Customers can search for services available in a specific city according to cert
 **The words solution and service will be used with the same meaning, because initially I thought of the project using the word service, which makes more sense in this context, but this word is reserved for spring boot*
 
 ## <a name="technologies"></a> 2. Technologies
-- Java Spring Boot
+- Java Spring Boot, JPA
 - PostgreSQL
-- Docker
-- AWS EC2
+- Docker, docker compose
+- AWS EC2, Route 53
 
 ## <a name="a-few-steps-on-how-i-built-it"></a> 3. A few steps on how I built it
 
