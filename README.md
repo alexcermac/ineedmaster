@@ -3,6 +3,8 @@ Contact <br/>
 Email: alexandrucermac@gmail.com <br/>
 Phone number: 0743939803
 
+View live demo: <a href="https://ineedmaster.vercel.app">ineedmaster.vercel.app</a>
+
 Mention: The front end is implemented using React (Next.js) and is stored in another GitHub repository. **[Click here to open repository](https://github.com/alexcermac/ineedmaster_client)**
 
 ### Table of contents
@@ -14,7 +16,8 @@ Mention: The front end is implemented using React (Next.js) and is stored in ano
    3.4 [Architecture](#architecture) <br/>
    3.5 [Build and Deploy](#build-and-deploy) <br/>
 4. [Installation](#installation) <br/>
-5. [Future updates, problems, things that need to be fixed](#future-updates-problems-things-that-need-to-be-fixed)
+5. [Demo accounts](#demo-accounts) <br/>
+6. [Future updates, problems, things that need to be fixed](#future-updates-problems-things-that-need-to-be-fixed)
 
 
 ## <a name="description"></a> 1. Description
@@ -106,7 +109,18 @@ To deploy the project on EC2 I created a new instance of it on AWS, updated the 
 	</li>
 </ol>
 
-## <a name="future-updates-problems-things-that-need-to-be-fixed"></a> 5. Future updates, problems, things that need to be fixed
+## <a name="demo-accounts"></a> 5. Demo accounts
+With these demo accounts you can view some dummy data + play a little bit with the platform.
+
+### Master:
+email: demo_master@gmail.com <br>
+password: pass
+
+### Customer:
+email: demo_customer@gmail.com <br>
+password: pass
+
+## <a name="future-updates-problems-things-that-need-to-be-fixed"></a> 6. Future updates, problems, things that need to be fixed
 <ul>
 	<li>
 		<p>A <b>business problem</b> with this platform is <b>the communication</b> between the client and the one who provides the services on the part of setting the date and time. That is, the client can only offer a variant of the date and time interval, and the service provider can accept or refuse.</p>
